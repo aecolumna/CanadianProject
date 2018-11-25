@@ -34,30 +34,17 @@ CMachineFactory::~CMachineFactory()
 
 
 /**
- * Create a machine object
+ * Create a NewMachine object
+ * Then calls factory that calls 
  * \returns Object of type CMachine
  */
 std::shared_ptr<CMachine> CMachineFactory::CreateMachine()
 {
     auto machine = make_shared<CNewMachine>();
-	CMachineDlg dlg(machine);
-	if(dlg.DoModal() == IDOK){} // Sets Machine Number
 
-	int machineNumber = machine->GetMachineNumber();
 	CMachinesFactory factory;
-
-	std::shared_ptr<CMachineActual> machineActual;
+	auto machineActual = factory.CreateMachine1(); // by default, we create machine1
 	
-	// place Factory for different machine here!
-	if ( machineNumber == 1 || machineNumber != 2)
-	{
-		machineActual = factory.CreateMachine1();
-	}
-	else if (machineNumber == 2)
-	{
-		machineActual = factory.CreateMachine2();
-	}
-
 	machine->SetMachineActual(machineActual);
 	machineActual->SetNewMachine(machine.get()); 
 	

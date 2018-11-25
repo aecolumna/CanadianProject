@@ -53,22 +53,22 @@ void CNewMachine::DrawMachine(Gdiplus::Graphics * graphics)
 	int x = mX + GearX;
 	int y = mY + GearY;
 
-	for (int i = 0; i < NumTeeth; i++)
-	{
-		double angle1 = i * 2 * M_PI / NumTeeth;
-		double angle2 = (i + 0.5) * 2 * M_PI / NumTeeth;
-		double angle3 = (i + 1.0) * 2 * M_PI / NumTeeth;
+	//for (int i = 0; i < NumTeeth; i++)
+	//{
+	//	double angle1 = i * 2 * M_PI / NumTeeth;
+	//	double angle2 = (i + 0.5) * 2 * M_PI / NumTeeth;
+	//	double angle3 = (i + 1.0) * 2 * M_PI / NumTeeth;
 
-		graphics->DrawLine(&pen2, (REAL)(x + OuterRadius * cos(angle1)), (REAL)(y + OuterRadius * sin(angle1)),
-			(REAL)(x + OuterRadius * cos(angle2)), (REAL)(y + OuterRadius * sin(angle2)));
-		graphics->DrawLine(&pen2, (REAL)(x + OuterRadius * cos(angle2)), (REAL)(y + OuterRadius * sin(angle2)),
-			(REAL)(x + InnerRadius * cos(angle2)), (REAL)(y + InnerRadius * sin(angle2)));
-		graphics->DrawLine(&pen2, (REAL)(x + InnerRadius * cos(angle2)), (REAL)(y + InnerRadius * sin(angle2)),
-			(REAL)(x + InnerRadius * cos(angle3)), (REAL)(y + InnerRadius * sin(angle3)));
-		graphics->DrawLine(&pen2, (REAL)(x + InnerRadius * cos(angle3)), (REAL)(y + InnerRadius * sin(angle3)),
-			(REAL)(x + OuterRadius * cos(angle3)), (REAL)(y + OuterRadius * sin(angle3)));
+	//	graphics->DrawLine(&pen2, (REAL)(x + OuterRadius * cos(angle1)), (REAL)(y + OuterRadius * sin(angle1)),
+	//		(REAL)(x + OuterRadius * cos(angle2)), (REAL)(y + OuterRadius * sin(angle2)));
+	//	graphics->DrawLine(&pen2, (REAL)(x + OuterRadius * cos(angle2)), (REAL)(y + OuterRadius * sin(angle2)),
+	//		(REAL)(x + InnerRadius * cos(angle2)), (REAL)(y + InnerRadius * sin(angle2)));
+	//	graphics->DrawLine(&pen2, (REAL)(x + InnerRadius * cos(angle2)), (REAL)(y + InnerRadius * sin(angle2)),
+	//		(REAL)(x + InnerRadius * cos(angle3)), (REAL)(y + InnerRadius * sin(angle3)));
+	//	graphics->DrawLine(&pen2, (REAL)(x + InnerRadius * cos(angle3)), (REAL)(y + InnerRadius * sin(angle3)),
+	//		(REAL)(x + OuterRadius * cos(angle3)), (REAL)(y + OuterRadius * sin(angle3)));
 
-	}
+	//}
 
 
 	y = mY - LineSize * 3;
@@ -97,38 +97,30 @@ void CNewMachine::DrawMachine(Gdiplus::Graphics * graphics)
 		y -= LineSpacing;
 	}
 
-	{
-		wstringstream str;
-		str << L"Machine Number: " << mMachineNumber;
-		CenteredString(graphics, str.str(), mX, y, LineSize);
-		y -= LineSpacing;
-	}
-
-	
 }
 
 
 void CNewMachine::SetMachineNumber(int machine)
 {
-	if (machine != mMachineNumber) {
-		mMachineNumber = machine;
-
-		CMachinesFactory factory;
-
-		std::shared_ptr<CMachineActual> machineActual;
-
-		// place Factory for different machine here!
-		if (mMachineNumber == 1 || mMachineNumber != 2)
-			machineActual = factory.CreateMachine1();
+	if (machine == mMachineNumber) 
+		return;
 		
-		else if (mMachineNumber == 2)
-			machineActual = factory.CreateMachine2();
+	mMachineNumber = machine;
+
+	CMachinesFactory factory;
+
+	std::shared_ptr<CMachineActual> machineActual;
+
+	if (mMachineNumber == 1 || mMachineNumber != 2)
+		machineActual = factory.CreateMachine1();
+		
+	else if (mMachineNumber == 2)
+		machineActual = factory.CreateMachine2();
 		
 
-		SetMachineActual(machineActual);
-		machineActual->SetNewMachine(this);
-	}
-	 
+	SetMachineActual(machineActual);
+	machineActual->SetNewMachine(this);
+
 }
 
 /**
