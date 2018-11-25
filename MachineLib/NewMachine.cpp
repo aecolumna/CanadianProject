@@ -30,6 +30,7 @@ void CNewMachine::DrawMachine(Gdiplus::Graphics * graphics)
 {
 	
 	// call individual draw on every single component
+	mMachine->DrawMachine(graphics);
 
 	const int LineSize = 16;
 	const int LineSpacing = 25;
@@ -103,13 +104,31 @@ void CNewMachine::DrawMachine(Gdiplus::Graphics * graphics)
 		y -= LineSpacing;
 	}
 
-	mMachine->DrawMachine(graphics);
+	
 }
 
 
 void CNewMachine::SetMachineNumber(int machine)
 {
-	 mMachineNumber = machine; 
+	if (machine != mMachineNumber) {
+		mMachineNumber = machine;
+
+		CMachinesFactory factory;
+
+		std::shared_ptr<CMachineActual> machineActual;
+
+		// place Factory for different machine here!
+		if (mMachineNumber == 1 || mMachineNumber != 2)
+			machineActual = factory.CreateMachine1();
+		
+		else if (mMachineNumber == 2)
+			machineActual = factory.CreateMachine2();
+		
+
+		SetMachineActual(machineActual);
+		machineActual->SetNewMachine(this);
+	}
+	 
 }
 
 /**
@@ -137,10 +156,6 @@ void CNewMachine::CenteredString(Gdiplus::Graphics *graphics, const std::wstring
 		PointF((REAL)(x - rect.Width / 2), (REAL)y),   // Where to draw (top left corner)
 		&black);    // The brush to draw the text with
 }
-
-
-
-
 
 void CNewMachine::SetLocation(int x, int y)
 {

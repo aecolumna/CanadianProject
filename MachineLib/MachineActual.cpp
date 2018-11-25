@@ -24,7 +24,13 @@ CMachineActual::~CMachineActual()
 
 void CMachineActual::DrawMachine(Gdiplus::Graphics * graphics)
 {
-	mComponents[0]->DrawComponent(graphics);
+
+
+	double angle = GetNewMachine()->GetMachineFrame();
+	for (auto comp : mComponents)
+	{
+		comp->DrawComponent(graphics, angle);
+	}
 }
 
 void CMachineActual::AddComponent(std::shared_ptr<CComponent> component)

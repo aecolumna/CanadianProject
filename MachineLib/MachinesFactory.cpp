@@ -33,6 +33,11 @@ std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine1()
 std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine2()
 {
 	auto machine = make_shared<CMachineActual>();
+	auto house = make_shared<CComponent>(490, 273);
+	house->Circle(100);
+	house->SetColor(Color(68, 114, 196));
+	house->SetImage(L"images/electric-wheel.png");
+	machine->AddComponent(house);
 	return machine;
 }
 
