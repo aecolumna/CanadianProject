@@ -14,7 +14,7 @@
     <ProjectGuid>{2B49B3F8-5A23-4BC3-8A77-189C0B2B9671}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Testing</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -102,6 +102,10 @@
     <ClCompile Include="CAnimChannelAngleTest.cpp" />
     <ClCompile Include="CDrawableTest.cpp" />
     <ClCompile Include="CImageDrawableTest.cpp" />
+    <ClCompile Include="CNewMachineTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CPictureObserverTest.cpp" />
     <ClCompile Include="CPictureTest.cpp" />
     <ClCompile Include="CPolyDrawableTest.cpp" />

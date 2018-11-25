@@ -9,6 +9,10 @@
 #include "stdafx.h"
 #include "MachineFactory.h"
 #include "Machine.h"
+#include "NewMachine.h"
+#include "MachineDlg.h"
+#include "MachineAFactory.h"
+#include "MachineActual.h"
 
 
 using namespace std;
@@ -35,6 +39,28 @@ CMachineFactory::~CMachineFactory()
  */
 std::shared_ptr<CMachine> CMachineFactory::CreateMachine()
 {
-    return make_shared<CMachine>();
+    auto machine = make_shared<CNewMachine>();
+	CMachineDlg dlg(machine);
+	if(dlg.DoModal() == IDOK){} // Sets Machine Number
+
+	int machineNumber = machine->GetMachineNumber();
+	CMachineAFactory factory;
+
+	std::shared_ptr<CMachineActual> machineActual;
+	
+	// place Factory for different machine here!
+	if ( machineNumber == 1 || machineNumber != 2)
+	{
+		machineActual = factory.CreateMachine1();
+	}
+	else if (machineNumber == 2)
+	{
+		machineActual = factory.CreateMachine2();
+	}
+
+	machine->SetMachineActual(machineActual);
+	machineActual->SetNewMachine(machine.get()); 
+	
+	return machine;
 }
 

@@ -15,7 +15,7 @@
     <RootNamespace>BugLib</RootNamespace>
     <Keyword>MFCDLLProj</Keyword>
     <ProjectName>MachineLib</ProjectName>
-    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -112,6 +112,9 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MachineActual.cpp" />
+    <ClCompile Include="MachineAFactory.cpp" />
+    <ClCompile Include="NewMachine.cpp" />
     <ClCompile Include="WavChannel.cpp" />
     <ClCompile Include="WAVFileReader.cpp" />
     <ClCompile Include="WavPlayer.cpp" />
@@ -127,6 +130,9 @@
     <ClCompile Include="MachineStandin.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="MachineActual.h" />
+    <ClInclude Include="MachineAFactory.h" />
+    <ClInclude Include="NewMachine.h" />
     <ClInclude Include="WavChannel.h" />
     <ClInclude Include="WAVFileReader.h" />
     <ClInclude Include="WavPlayer.h" />

@@ -11,6 +11,7 @@
 #include <memory>
 
 class CMachine;
+class CNewMachine;
 
 
 /**
