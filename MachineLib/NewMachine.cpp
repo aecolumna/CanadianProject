@@ -2,10 +2,11 @@
 #include "NewMachine.h"
 #include "MachineActual.h"
 #include "MachineDlg.h"
-#include "MachineAFactory.h"
+#include "MachinesFactory.h"
 #include <string>
 #include <sstream>
-
+#include "Polygon.h"
+#include "Component.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -27,9 +28,8 @@ CNewMachine::~CNewMachine()
 */
 void CNewMachine::DrawMachine(Gdiplus::Graphics * graphics)
 {
-	//mMachine->DrawMachine(graphics);
+	
 	// call individual draw on every single component
-
 
 	const int LineSize = 16;
 	const int LineSpacing = 25;
@@ -95,11 +95,16 @@ void CNewMachine::DrawMachine(Gdiplus::Graphics * graphics)
 		CenteredString(graphics, str.str(), mX, y, LineSize);
 		y -= LineSpacing;
 	}
+
+	{
+		wstringstream str;
+		str << L"Machine Number: " << mMachineNumber;
+		CenteredString(graphics, str.str(), mX, y, LineSize);
+		y -= LineSpacing;
+	}
+
+	mMachine->DrawMachine(graphics);
 }
-
-
-
-
 
 
 void CNewMachine::SetMachineNumber(int machine)

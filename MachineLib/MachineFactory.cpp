@@ -11,7 +11,7 @@
 #include "Machine.h"
 #include "NewMachine.h"
 #include "MachineDlg.h"
-#include "MachineAFactory.h"
+#include "MachinesFactory.h"
 #include "MachineActual.h"
 
 
@@ -44,7 +44,7 @@ std::shared_ptr<CMachine> CMachineFactory::CreateMachine()
 	if(dlg.DoModal() == IDOK){} // Sets Machine Number
 
 	int machineNumber = machine->GetMachineNumber();
-	CMachineAFactory factory;
+	CMachinesFactory factory;
 
 	std::shared_ptr<CMachineActual> machineActual;
 	

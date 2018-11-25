@@ -3,12 +3,12 @@
 
 class CMachineActual;
 
-class CMachineAFactory
+class CMachinesFactory
 {
 public:
-	CMachineAFactory();
+	CMachinesFactory();
 
-	virtual ~CMachineAFactory();
+	virtual ~CMachinesFactory();
 	std::shared_ptr<CMachineActual> CreateMachine1();
 	std::shared_ptr<CMachineActual> CreateMachine2();
 	

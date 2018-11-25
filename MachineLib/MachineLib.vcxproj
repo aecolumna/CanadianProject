@@ -112,8 +112,9 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="MachineActual.cpp" />
-    <ClCompile Include="MachineAFactory.cpp" />
+    <ClCompile Include="MachinesFactory.cpp" />
     <ClCompile Include="NewMachine.cpp" />
     <ClCompile Include="WavChannel.cpp" />
     <ClCompile Include="WAVFileReader.cpp" />
@@ -130,8 +131,9 @@
     <ClCompile Include="MachineStandin.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Component.h" />
     <ClInclude Include="MachineActual.h" />
-    <ClInclude Include="MachineAFactory.h" />
+    <ClInclude Include="MachinesFactory.h" />
     <ClInclude Include="NewMachine.h" />
     <ClInclude Include="WavChannel.h" />
     <ClInclude Include="WAVFileReader.h" />

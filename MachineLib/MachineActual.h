@@ -1,5 +1,11 @@
 #pragma once
+
+#include <vector>
+#include <memory>
+
+
 class CNewMachine;
+class CComponent;
 
 class AFX_EXT_CLASS CMachineActual
 {
@@ -18,12 +24,18 @@ public:
 	int GetMachineNumber() { return mMachineNumber; }
 	void SetMachineNumber(int num) { mMachineNumber = num; }
 
+	void AddComponent(std::shared_ptr<CComponent> component);
+
+
+
 
 private:
 	Gdiplus::Point mLocation = Gdiplus::Point(0, 0);
 	double mSpeed = 1.0;
 	CNewMachine* mNewMachine = nullptr;
 	int mMachineNumber = 1;
+
+	std::vector<std::shared_ptr<CComponent>> mComponents;
 	
 };
 

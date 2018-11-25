@@ -6,9 +6,6 @@
 class CMachineActual;
 class CMachineDlg;
 
-// forward declaration
-//class CMachineDrawable;
-
 class AFX_EXT_CLASS CNewMachine : public CMachine
 {
 public:

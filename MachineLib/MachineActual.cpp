@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "MachineActual.h"
 #include "NewMachine.h"
+#include "Component.h"
 #include <string>
 
 using namespace std;
@@ -23,7 +24,14 @@ CMachineActual::~CMachineActual()
 
 void CMachineActual::DrawMachine(Gdiplus::Graphics * graphics)
 {
+	mComponents[0]->DrawComponent(graphics);
 }
+
+void CMachineActual::AddComponent(std::shared_ptr<CComponent> component)
+{
+	mComponents.push_back(component);
+}
+
 
 
 
