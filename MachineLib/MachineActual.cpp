@@ -29,7 +29,7 @@ void CMachineActual::DrawMachine(Gdiplus::Graphics * graphics)
 	double angle = GetNewMachine()->GetMachineFrame();
 	for (auto comp : mComponents)
 	{
-		comp->DrawComponent(graphics, angle);
+		comp->DrawComponent(graphics, angle);		
 	}
 }
 

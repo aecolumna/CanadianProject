@@ -36,10 +36,10 @@ void CNewMachine::DrawMachine(Gdiplus::Graphics * graphics)
 	const int LineSpacing = 25;
 
 	Pen pen(Color(139, 69, 19), (REAL)2);
-	const int StandinWidth = 500;
+	const int StandinWidth = 700;
 	const int StandinHeight = 400;
 
-	graphics->DrawRectangle(&pen, (REAL)(mX - StandinWidth / 2), (REAL)(mY - StandinHeight), (REAL)(StandinWidth), (REAL)(StandinHeight));
+	//graphics->DrawRectangle(&pen, (REAL)(mX - StandinWidth / 2), (REAL)(mY - StandinHeight), (REAL)(StandinWidth), (REAL)(StandinHeight));
 
 	const int OuterRadius = 90;
 	const int InnerRadius = 80;

@@ -33,7 +33,11 @@ void CComponent::DrawComponent(Gdiplus::Graphics* graphics)
 
 void CComponent::DrawComponent(Gdiplus::Graphics * graphics, double angle)
 {
-	mAngle = angle;
-	CPolygon::SetRotation(angle * .1);
+	if(mCanMove)
+	{
+		mAngle = angle;
+		CPolygon::SetRotation(angle * .1);
+	}
+
 	CPolygon::DrawPolygon(graphics, mPos.X, mPos.Y);
 }
