@@ -210,13 +210,7 @@ std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine1()
 	machine->AddComponent(miniPulley0);
 
 
-	//Rectangle(-size / 2, size / 2, size, size);
-	auto flag = make_shared<CComponent>(xBase + 60 + (postWidth / 2), yBase - heightBase - postHeight);
-	int size = 150;
-	flag->Rectangle(-size/2, size/2, size, size);
-	flag->SetImage(L"images/flag22.png");
-	flag->SetCanMove(true);
-	machine->AddComponent(flag);
+
 
 	auto motorRotor = make_shared<CComponent>(rotorX, rotorY);
 	motorRotor->Circle(littlePulleyRadius);
@@ -224,13 +218,14 @@ std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine1()
 	motorRotor->SetCanMove(true);
 	machine->AddComponent(motorRotor);
 
-	int midPointX = miniPulley0X + (rotorX - miniPulley0X) / 2;
-	int midPointY = miniPulley0Y + (rotorY - miniPulley0Y) / 2;
-
 	
-
-
-	
+	//Rectangle(-size / 2, size / 2, size, size);
+	auto flag = make_shared<CComponent>(xBase + 60 + (postWidth / 2), yBase - heightBase - postHeight);
+	int size = 150;
+	flag->Rectangle(-size / 2, size / 2, size, size + 20);
+	flag->SetImage(L"images/flag22.png");
+	flag->SetCanMove(true);
+	machine->AddComponent(flag);
 
 	return machine;
 }
