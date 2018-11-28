@@ -38,6 +38,8 @@ const int rotorY = yBase - heightBase - machineFrameHeight / 2;
 const int firstPostX = xBase + 180;
 const int miniPulley0X = xBase + 60 + (postWidth / 2);
 const int miniPulley0Y = yBase - heightBase - postHeight;
+const int miniPulley1X = xBase + 60 + (postWidth / 2);
+const int miniPulley1Y = yBase - heightBase - postHeight;
 
 void CMachinesFactory::CreatePost(shared_ptr<CMachineActual>& machine, int x, Gdiplus::Color color)
 {
@@ -110,7 +112,8 @@ std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine1()
 
 	// Create Motor Frame
 	auto motorFrame = make_shared<CComponent>();
-	motorFrame->Rectangle(xBase + 120 - postWidth, yBase - heightBase, machineFrameHeight, machineFrameWidth);
+	motorFrame->Rectangle(xBase + 120 - postWidth, yBase - heightBase,
+		machineFrameHeight, machineFrameWidth);
 	motorFrame->SetImage(L"images/motor2.png");
 	machine->AddComponent(motorFrame);
 
@@ -133,15 +136,25 @@ std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine1()
 	//belt2->SetColor(Color::Black);
 	machine->AddComponent(belt2);
 
-
 	distance = 4 * postSpacing + 3;
-	auto belt3 = make_shared<CComponent>(firstPostX + postSpacing * 0 + insidePulleyRadius/2, yBase - heightBase - postHeight + insidePulleyRadius);
+	auto belt3 = make_shared<CComponent>(firstPostX + postSpacing * 0 + insidePulleyRadius/2,
+		yBase - heightBase - postHeight + insidePulleyRadius);
 	belt3->Rectangle(0, 0, distance, 2);
 	machine->AddComponent(belt3);
 
 
-	//// End of Belts
+	auto belt4 = make_shared<CComponent>(firstPostX + postSpacing * 0 + insidePulleyRadius / 2,
+		yBase - heightBase - postHeight - insidePulleyRadius + 3);
+	belt4->Rectangle(0, 0, distance, 2);
+	machine->AddComponent(belt4);
 
+
+
+
+
+
+
+	//// End of Belts
 
 
 	auto base = make_shared<CComponent>();
@@ -150,29 +163,45 @@ std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine1()
 	machine->AddComponent(base);
 
 
-	CreateBar(machine, firstPostX + postSpacing * 0, L"images/bar-cyan.png");
+	CreateBar(machine, firstPostX + postSpacing * 0, L"images/bar-cyan.png"); // first red bar
 	CreateBar(machine, firstPostX + postSpacing * 1, L"images/bar-grn.png");
 	CreateBar(machine, firstPostX + postSpacing * 2, L"images/bar-pur.png");
 	CreateBar(machine, firstPostX + postSpacing * 3, L"images/bar-yel.png");
 	CreateBar(machine, firstPostX + postSpacing * 4, L"images/bar-red.png");
 
-	CreatePulley(machine, firstPostX + (postWidth / 2));
+
+	auto pulley0 = make_shared<CComponent>(xBase + 60 + (postWidth / 2), yBase - heightBase - postHeight);
+	pulley0->Circle(40);
+	pulley0->SetImage(L"images/pulley.png");
+	pulley0->SetCanMove(true);
+	machine->AddComponent(pulley0);
+
+
+
 	CreatePulley(machine, firstPostX + postSpacing * 1 + (postWidth / 2));
 	CreatePulley(machine, firstPostX + postSpacing * 2 + (postWidth / 2));
 	CreatePulley(machine, firstPostX + postSpacing * 3 + (postWidth / 2));
 	CreatePulley(machine, firstPostX + postSpacing * 4 + (postWidth / 2));
 
 
-	double midX = (xBase + 60 + (postWidth / 2) + xBase + 120 - postWidth + machineFrameWidth / 2) / 2.0;
-	double midY = (yBase - heightBase - postHeight + yBase - heightBase - machineFrameHeight / 2) / 2.0;
 
-	auto pulley0 = make_shared<CComponent>(xBase + 60 + (postWidth / 2), yBase - heightBase - postHeight);
-	pulley0->Circle(40);
-	pulley0->SetColor(Color(68, 114, 196));
-	pulley0->SetImage(L"images/pulley.png");
-	pulley0->SetCanMove(true);
-	machine->AddComponent(pulley0);
 
+//	double midX = (xBase + 60 + (postWidth / 2) + xBase + 120 - postWidth + machineFrameWidth / 2) / 2.0;
+//	double midY = (yBase - heightBase - postHeight + yBase - heightBase - machineFrameHeight / 2) / 2.0;
+		// This belt must be created after the left-most pulley because it sits on top of it.
+	int distanceBelt = firstPostX - (xBase + 60);
+
+	auto belt5 = make_shared<CComponent>(miniPulley1X, miniPulley1Y - littlePulleyRadius + 2);
+	belt5->Rectangle(0, 0, distanceBelt, 2);
+	belt5->SetPhase(-.02);
+	machine->AddComponent(belt5);
+
+	auto belt6 = make_shared<CComponent>(miniPulley1X, miniPulley1Y + littlePulleyRadius - 2);
+	belt6->Rectangle(0, 0, distanceBelt, 2);
+	belt6->SetPhase(0.02);
+	machine->AddComponent(belt6);
+
+	CreatePulley(machine, firstPostX + (postWidth / 2));
 
 	auto miniPulley0 = make_shared<CComponent>(xBase + 60 + (postWidth / 2), yBase - heightBase - postHeight);
 	miniPulley0->Circle(littlePulleyRadius);
@@ -181,7 +210,13 @@ std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine1()
 	machine->AddComponent(miniPulley0);
 
 
-
+	//Rectangle(-size / 2, size / 2, size, size);
+	auto flag = make_shared<CComponent>(xBase + 60 + (postWidth / 2), yBase - heightBase - postHeight);
+	int size = 150;
+	flag->Rectangle(-size/2, size/2, size, size);
+	flag->SetImage(L"images/flag22.png");
+	flag->SetCanMove(true);
+	machine->AddComponent(flag);
 
 	auto motorRotor = make_shared<CComponent>(rotorX, rotorY);
 	motorRotor->Circle(littlePulleyRadius);
