@@ -72,13 +72,13 @@ void CNewMachine::DrawMachine(Gdiplus::Graphics * graphics)
 
 
 	y = mY - LineSize * 3;
-	CenteredString(graphics, L"This is Andres' New Machine!", mX, y, LineSize);
+	//CenteredString(graphics, L"This is Andres' New Machine!", mX, y, LineSize);
 	y -= LineSpacing;
 
 	{
 		wstringstream str;
-		str << L"Machine: " << mMachine << ends;
-		CenteredString(graphics, str.str(), mX, y, LineSize);
+		//str << L"Machine: " << mMachine << ends;
+		//CenteredString(graphics, str.str(), mX, y, LineSize);
 		y -= LineSpacing;
 	}
 

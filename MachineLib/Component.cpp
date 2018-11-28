@@ -7,11 +7,13 @@ using namespace Gdiplus;
 using namespace std;
 CComponent::CComponent()
 {
+	CPolygon::SetColor(Color::Black); //default color is black
 }
 
 CComponent::CComponent(int x, int y)
 {
 	mPos = Point(x, y);
+	CPolygon::SetColor(Color::Black); // default color is black
 }
 
 CComponent::CComponent(Gdiplus::Point point)
