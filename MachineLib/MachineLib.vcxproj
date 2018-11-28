@@ -115,7 +115,10 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="MachineActual.cpp" />
     <ClCompile Include="MachinesFactory.cpp" />
+    <ClCompile Include="Motor.cpp" />
     <ClCompile Include="NewMachine.cpp" />
+    <ClCompile Include="RotationSink.cpp" />
+    <ClCompile Include="RotationSource.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="WavChannel.cpp" />
     <ClCompile Include="WAVFileReader.cpp" />
@@ -135,7 +138,10 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="MachineActual.h" />
     <ClInclude Include="MachinesFactory.h" />
+    <ClInclude Include="Motor.h" />
     <ClInclude Include="NewMachine.h" />
+    <ClInclude Include="RotationSink.h" />
+    <ClInclude Include="RotationSource.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="WavChannel.h" />
     <ClInclude Include="WAVFileReader.h" />

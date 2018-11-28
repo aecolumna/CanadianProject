@@ -26,14 +26,14 @@ CComponent::~CComponent()
 {
 }
 
-void CComponent::DrawComponent(Gdiplus::Graphics* graphics)
+void CComponent::Draw(Gdiplus::Graphics* graphics)
 {
 
 	CPolygon::DrawPolygon(graphics, mPos.X, mPos.Y);
 }
 
 
-void CComponent::DrawComponent(Gdiplus::Graphics * graphics, double angle)
+void CComponent::Draw(Gdiplus::Graphics * graphics, double angle)
 {
 	if(mCanMove)
 	{

@@ -16,8 +16,8 @@ public:
 	/// Assignment operator/disabled
 	void operator=(const CComponent &) = delete;
 
-	void DrawComponent(Gdiplus::Graphics* graphics);
-	void DrawComponent(Gdiplus::Graphics* graphics, double angle);
+	virtual void Draw(Gdiplus::Graphics* graphics);
+	virtual void Draw(Gdiplus::Graphics* graphics, double angle);
 	bool GetCanMove() { return mCanMove; }
 	void SetCanMove(bool val) { mCanMove = val; }
 

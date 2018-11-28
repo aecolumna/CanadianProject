@@ -4,7 +4,7 @@
 #include <memory>
 #include "Component.h"
 #include <cmath>
-
+#include "Motor.h"
 
 
 using namespace std;
@@ -210,7 +210,11 @@ std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine1()
 	machine->AddComponent(miniPulley0);
 
 
-
+	//auto motorRotor = make_shared<CComponent>(rotorX, rotorY);
+	//motorRotor->Circle(littlePulleyRadius);
+	//motorRotor->SetImage(L"images/pulley2.png");
+	//motorRotor->SetCanMove(true);
+	//machine->AddComponent(motorRotor);
 
 	auto motorRotor = make_shared<CComponent>(rotorX, rotorY);
 	motorRotor->Circle(littlePulleyRadius);
