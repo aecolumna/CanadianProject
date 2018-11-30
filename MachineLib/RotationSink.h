@@ -10,9 +10,12 @@ public:
 
 	double GetRotation() { return mRotation; }
 	void SetRotation(double x) { mRotation = x; }
+	double GetY() { return mY; }
+	void SetY(double y) { mY = y; }
 
 private:
 	double mRotation = 0;
+	double mY = 0;
 
 };
 

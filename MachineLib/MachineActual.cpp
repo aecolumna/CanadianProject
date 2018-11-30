@@ -4,6 +4,7 @@
 #include "Component.h"
 #include <string>
 #include "Motor.h"
+#include "WavPlayer.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -19,6 +20,7 @@ CMachineActual::CMachineActual(int num)
 }
 
 
+
 CMachineActual::~CMachineActual()
 {
 }
@@ -26,18 +28,13 @@ CMachineActual::~CMachineActual()
 void CMachineActual::DrawMachine(Gdiplus::Graphics * graphics)
 {
 
-
 	double angle = GetNewMachine()->GetMachineFrame() * .2;
 
 	angle *= GetNewMachine()->GetSpeed();
 
 	auto DependencyVectorSize = mDependencies.size();
 
-	// Fix since last element doesnt have its sink set!
-	//for (int i = 0; i < DependencyVectorSize - 1; i++)
-	//{
-	//	mDependencies[i]->UpdateRotation(angle);
-	//}
+
 	for (auto comp : mDependencies)
 	{
 		comp->UpdateRotation(angle);
@@ -46,7 +43,7 @@ void CMachineActual::DrawMachine(Gdiplus::Graphics * graphics)
 
 	for (auto comp : mComponents)
 	{
-		comp->Draw(graphics, angle);
+		comp->Draw(graphics);
 	}
 }
 

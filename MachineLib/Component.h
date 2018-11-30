@@ -30,8 +30,11 @@ public:
 	CRotationSink* GetSink() { return &mSink; }
 	void SetRadius(double radius) { mRadius = radius; }
 	double GetRadius() { return mRadius; }
+	int GetX() { return mPos.X; }
 	int GetY() { return mPos.Y; }
 	void SetY(int y) { mPos = Gdiplus::Point(mPos.X, y); }
+	void SetX(int x){ mPos = Gdiplus::Point(x, mPos.Y) ; }
+	void SetPos(int x, int y) { Gdiplus::Point(x, y); }
 
 private:
 	Gdiplus::Point mPos = Gdiplus::Point(0, 0);

@@ -19,4 +19,14 @@ void CRotationSource::SetRotation(double angleDistance)
 	GetSink()->SetRotation(mAngleDistance);
 }
 
+void CRotationSource::SetY(double y)
+{
+	mY = y;
+	if (GetSink() == nullptr)
+		return;
+	GetSink()->SetY(y);
+}
+
+
+
 

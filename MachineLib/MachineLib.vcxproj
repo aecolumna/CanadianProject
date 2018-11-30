@@ -122,6 +122,7 @@
     <ClCompile Include="Roller.cpp" />
     <ClCompile Include="RotationSink.cpp" />
     <ClCompile Include="RotationSource.cpp" />
+    <ClCompile Include="Shaft.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="WavChannel.cpp" />
     <ClCompile Include="WAVFileReader.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="Roller.h" />
     <ClInclude Include="RotationSink.h" />
     <ClInclude Include="RotationSource.h" />
+    <ClInclude Include="Shaft.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="WavChannel.h" />
     <ClInclude Include="WAVFileReader.h" />

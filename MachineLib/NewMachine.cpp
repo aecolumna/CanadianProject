@@ -8,6 +8,7 @@
 #include "Polygon.h"
 #include "Component.h"
 
+
 using namespace std;
 using namespace Gdiplus;
 
@@ -71,31 +72,31 @@ void CNewMachine::DrawMachine(Gdiplus::Graphics * graphics)
 	//}
 
 
-	y = mY - LineSize * 3;
-	//CenteredString(graphics, L"This is Andres' New Machine!", mX, y, LineSize);
-	y -= LineSpacing;
+	//y = mY - LineSize * 3;
+	////CenteredString(graphics, L"This is Andres' New Machine!", mX, y, LineSize);
+	//y -= LineSpacing;
 
-	{
-		wstringstream str;
-		//str << L"Machine: " << mMachine << ends;
-		//CenteredString(graphics, str.str(), mX, y, LineSize);
-		y -= LineSpacing;
-	}
+	//{
+	//	wstringstream str;
+	//	//str << L"Machine: " << mMachine << ends;
+	//	//CenteredString(graphics, str.str(), mX, y, LineSize);
+	//	y -= LineSpacing;
+	//}
 
-	{
-		wstringstream str;
-		str << L"Frame: " << mMachineFrame << ends;
-		CenteredString(graphics, str.str(), mX, y, LineSize);
-		y -= LineSpacing;
-	}
+	//{
+	//	wstringstream str;
+	//	str << L"Frame: " << mMachineFrame << ends;
+	//	CenteredString(graphics, str.str(), mX, y, LineSize);
+	//	y -= LineSpacing;
+	//}
 
 
-	{
-		wstringstream str;
-		str << L"Speed: " << mSpeed;
-		CenteredString(graphics, str.str(), mX, y, LineSize);
-		y -= LineSpacing;
-	}
+	//{
+	//	wstringstream str;
+	//	str << L"Speed: " << mSpeed;
+	//	CenteredString(graphics, str.str(), mX, y, LineSize);
+	//	y -= LineSpacing;
+	//}
 
 }
 
@@ -112,16 +113,17 @@ void CNewMachine::SetMachineNumber(int machine)
 	std::shared_ptr<CMachineActual> machineActual;
 
 	if (mMachineNumber == 1 || mMachineNumber != 2)
-		machineActual = factory.CreateMachine1();
+		machineActual = factory.CreateMachine1(this);
 		
 	else if (mMachineNumber == 2)
-		machineActual = factory.CreateMachine2();
+		machineActual = factory.CreateMachine2(this);
 		
 
 	SetMachineActual(machineActual);
 	machineActual->SetNewMachine(this);
 
 }
+
 
 /**
  * Draw a centered string

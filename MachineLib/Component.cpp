@@ -30,7 +30,6 @@ CComponent::~CComponent()
 
 void CComponent::Draw(Gdiplus::Graphics* graphics)
 {
-
 	CPolygon::DrawPolygon(graphics, mPos.X, mPos.Y);
 }
 

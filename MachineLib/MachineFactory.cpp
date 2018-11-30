@@ -43,10 +43,10 @@ std::shared_ptr<CMachine> CMachineFactory::CreateMachine()
     auto machine = make_shared<CNewMachine>();
 
 	CMachinesFactory factory;
-	auto machineActual = factory.CreateMachine1(); // by default, we create machine1
+	auto machineActual = factory.CreateMachine1(machine.get()); // by default, we create machine1
 	
 	machine->SetMachineActual(machineActual);
-	machineActual->SetNewMachine(machine.get()); 
+
 	
 	return machine;
 }

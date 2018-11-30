@@ -2,7 +2,8 @@
 
 #include <vector>
 #include <memory>
-
+#include "WavPlayer.h"
+#include "NewMachine.h"
 
 class CNewMachine;
 class CComponent;
@@ -31,6 +32,8 @@ public:
 	void SetMotor(std::shared_ptr<CMotor> motor) { mMotor = motor; }
 	std::shared_ptr<CMotor>& GetMotor() { return mMotor; }
 
+	CWavPlayer* GetWavPlayer() { return mNewMachine->GetWavPlayer(); }
+
 private:
 	Gdiplus::Point mLocation = Gdiplus::Point(0, 0);
 	double mSpeed = 1.0;
@@ -40,8 +43,6 @@ private:
 	std::vector<std::shared_ptr<CComponent>> mComponents;
 	std::vector<std::shared_ptr<CComponent>> mDependencies;
 	std::shared_ptr<CMotor> mMotor;
-	
-	
 	
 };
 

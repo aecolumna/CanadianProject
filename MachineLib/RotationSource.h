@@ -15,7 +15,7 @@ public:
 
 	void SetRotation(double x);
 	double GetRotation() { return mAngleDistance; }
-
+	void SetY(double y);
 
 	void SetSink(CRotationSink* sink) { mSink = sink; }
 	CRotationSink* GetSink() { return mSink; }
@@ -23,8 +23,10 @@ public:
 	void AddSink(CRotationSink* sink) { mSinks.push_back(sink); }
 	std::vector<CRotationSink*>& GetSinks() { return mSinks; }
 
+
 private:
 	double mAngleDistance = 0; // maybe not needed
+	double mY = 0;
 	CRotationSink* mSink = nullptr;
 	std::vector<CRotationSink*> mSinks;
 

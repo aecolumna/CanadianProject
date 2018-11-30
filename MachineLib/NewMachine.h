@@ -1,10 +1,12 @@
 #pragma once
 
 #include "Machine.h"
+#include "WavPlayer.h"
 
 // forward declaration
 class CMachineActual;
 class CMachineDlg;
+
 
 class AFX_EXT_CLASS CNewMachine : public CMachine
 {
@@ -42,6 +44,7 @@ public:
 	void SetMachineActual(std::shared_ptr<CMachineActual> machine);
 	std::shared_ptr<CMachineActual> GetMachineActual() { return mMachine; }
 
+	CWavPlayer* GetWavPlayer() { return &mWavPlayer; }
 
 private:
 	/// pointer to Machine
@@ -67,6 +70,9 @@ private:
 
 	/// Current Frame
 	int mMachineFrame = 0;
+
+	CWavPlayer mWavPlayer;
+
 
 };
 
