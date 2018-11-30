@@ -1,6 +1,6 @@
 #pragma once
 #include "Component.h"
-#include "RotationSource.h"
+
 
 class CMotor : public CComponent
 {
@@ -12,12 +12,12 @@ public:
 	void operator=(const CMotor &) = delete;
 	virtual ~CMotor();
 
-	CMotor(int x, int y);
+	CMotor(int x, int y, double radius);
 
 	void Draw(Gdiplus::Graphics * graphics, double angle);
+	virtual void UpdateRotation(double angle);
 
 private:
-	CRotationSource mSource;
 	double mRadius = 1;
 
 };

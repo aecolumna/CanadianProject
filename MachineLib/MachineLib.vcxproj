@@ -112,11 +112,14 @@
     </Manifest>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Cam.cpp" />
     <ClCompile Include="Component.cpp" />
+    <ClCompile Include="Pulley.cpp" />
     <ClCompile Include="MachineActual.cpp" />
     <ClCompile Include="MachinesFactory.cpp" />
     <ClCompile Include="Motor.cpp" />
     <ClCompile Include="NewMachine.cpp" />
+    <ClCompile Include="Roller.cpp" />
     <ClCompile Include="RotationSink.cpp" />
     <ClCompile Include="RotationSource.cpp" />
     <ClCompile Include="Shape.cpp" />
@@ -135,11 +138,14 @@
     <ClCompile Include="MachineStandin.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cam.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="Pulley.h" />
     <ClInclude Include="MachineActual.h" />
     <ClInclude Include="MachinesFactory.h" />
     <ClInclude Include="Motor.h" />
     <ClInclude Include="NewMachine.h" />
+    <ClInclude Include="Roller.h" />
     <ClInclude Include="RotationSink.h" />
     <ClInclude Include="RotationSource.h" />
     <ClInclude Include="Shape.h" />

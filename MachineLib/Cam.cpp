@@ -1,23 +1,32 @@
 #include "stdafx.h"
-#include "Shape.h"
+#include "Cam.h"
 
 
-CShape::CShape()
+CCam::CCam()
 {
+	CCam(0, 0);
+}
+
+
+CCam::CCam(int x, int y) : CComponent(x, y)
+{
+
+	int insidePulleyRadius = 30;
 	CComponent::SetCanMove(true);
+	Circle(insidePulleyRadius - 10);
+	SetImage(L"images/hammered-copper1.png");
+	SetRadius(insidePulleyRadius - 10);
+	SetSourceRadius(insidePulleyRadius);
+	SetCanMove(true);
 }
 
 
-CShape::CShape(int x, int y) : CComponent(x, y)
+
+CCam::~CCam()
 {
-	CComponent::SetCanMove(true);
 }
 
-CShape::~CShape()
-{
-}
-
-void CShape::UpdateRotation(double angle)
+void CCam::UpdateRotation(double angle)
 {
 	/*
 			The rotation is straight from the frame count!
@@ -46,7 +55,7 @@ void CShape::UpdateRotation(double angle)
 
 }
 
-void CShape::SetSourceRadius(double rad)
+void CCam::SetSourceRadius(double rad)
 {
 	mAttached = true;
 	mSourceRadius = rad;

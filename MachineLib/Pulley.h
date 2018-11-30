@@ -3,35 +3,28 @@
 #include "RotationSink.h"
 #include "RotationSource.h"
 
-class CShape : public CComponent
+class CPulley : public CComponent
 {
 public:
-	// you must specify source radius
-	CShape();
-
-	CShape(int x, int y);
-
-	virtual ~CShape();
+	CPulley();
+	CPulley(double radius);
+	CPulley(int x, int y, double radius);
+	virtual ~CPulley();
 
 	virtual void UpdateRotation(double angle) override;
 
-	//virtual void UpdateRotation(double angle) override;
-
 	/// Copy constructor/disabled
-	CShape(const CShape &) = delete;
+	CPulley(const CPulley &) = delete;
 
 	/// Assignment operator/disabled
-	void operator=(const CShape &) = delete;
+	void operator=(const CPulley &) = delete;
 
 	double GetRadius() { return mRadius; }
 
 
 	void SetSourceRadius(double rad);
 
-	void SetAttached(bool val) { mAttached = val; }
-
 private:
-
 	CRotationSource mSource;
 	CRotationSink mSink;
 	double mRadius = 1;

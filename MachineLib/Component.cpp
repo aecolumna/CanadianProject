@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Component.h"
-
+#include "RotationSource.h"
+#include "RotationSink.h"
 
 
 using namespace Gdiplus;
@@ -12,6 +13,7 @@ CComponent::CComponent()
 
 CComponent::CComponent(int x, int y)
 {
+
 	mPos = Point(x, y);
 	CPolygon::SetColor(Color::Black); // default color is black
 }
@@ -35,11 +37,36 @@ void CComponent::Draw(Gdiplus::Graphics* graphics)
 
 void CComponent::Draw(Gdiplus::Graphics * graphics, double angle)
 {
-	if(mCanMove)
+	/*if(mCanMove)
 	{
 		mAngle = angle;
 		CPolygon::SetRotation(angle * .1);
-	}
+	}*/
 
 	CPolygon::DrawPolygon(graphics, mPos.X, mPos.Y);
+}
+
+void CComponent::UpdateRotation(double angle)
+{
+
+	/*
+	The rotation is straight from the frame count!
+	Multiply times the speed here maybe?
+	*/
+	
+	// doesn't have a source so return
+	if (mCanMove == false) 
+	{
+		return;
+	}
+
+// get angle-distance from Sink!
+	double rawAngle = GetSink()->GetRotation();
+	double actualAngle;
+
+	actualAngle = rawAngle / mRadius;
+	
+	CComponent::SetRotation(actualAngle);
+	GetSource()->SetRotation(mRadius * actualAngle);
+	return; // do nothing!
 }
