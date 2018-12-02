@@ -27,7 +27,7 @@ CMachineActual::~CMachineActual()
 
 void CMachineActual::DrawMachine(Gdiplus::Graphics * graphics)
 {
-
+	mFrame = GetNewMachine()->GetMachineFrame();
 	double angle = GetNewMachine()->GetMachineFrame() * .2;
 
 	angle *= GetNewMachine()->GetSpeed();
@@ -50,6 +50,11 @@ void CMachineActual::DrawMachine(Gdiplus::Graphics * graphics)
 void CMachineActual::AddComponent(std::shared_ptr<CComponent> component)
 {
 	mComponents.push_back(component);
+}
+
+void CMachineActual::ShowDialogBox()
+{
+
 }
 
 

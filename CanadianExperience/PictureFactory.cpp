@@ -9,6 +9,7 @@
 #include "HaroldFactory.h"
 #include "SpartyFactory.h"
 #include "ImageDrawable.h"
+#include "MusicMachineFactory.h"
 
 using namespace std;
 using namespace Gdiplus;
@@ -30,6 +31,15 @@ std::shared_ptr<CPicture> CPictureFactory::Create()
 {
     shared_ptr<CPicture> picture = make_shared<CPicture>();
 
+	CMusicMachineFactory musicFactory;
+	auto machine = musicFactory.Create();
+	machine->SetPosition(Point(100, 600));
+
+	CMusicMachineFactory musicFactory2;
+	auto machine2 = musicFactory.Create(2);
+	machine2->SetPosition(Point(400, 200));
+
+
     // Create the background and add it
     auto background = make_shared<CActor>(L"Background");
     background->SetClickable(false);
@@ -38,6 +48,10 @@ std::shared_ptr<CPicture> CPictureFactory::Create()
     background->AddDrawable(backgroundI);
     background->SetRoot(backgroundI);
     picture->AddActor(background);
+
+	picture->AddActor(machine2);
+	picture->AddActor(machine);
+	
 
     // Create and add Harold
     CHaroldFactory factory;
@@ -54,6 +68,8 @@ std::shared_ptr<CPicture> CPictureFactory::Create()
 
     sparty->SetPosition(Point(520, 500));
     picture->AddActor(sparty);
+
+
 
     return picture;
 }

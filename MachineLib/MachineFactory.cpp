@@ -43,11 +43,29 @@ std::shared_ptr<CMachine> CMachineFactory::CreateMachine()
     auto machine = make_shared<CNewMachine>();
 
 	CMachinesFactory factory;
-	auto machineActual = factory.CreateMachine1(machine.get()); // by default, we create machine1
+
+	// by default, we create machine1
+	auto machineActual = factory.CreateMachine1(machine.get()); 
 	
 	machine->SetMachineActual(machineActual);
+	machine->SetLocation(200, 600);
 
-	
 	return machine;
 }
 
+
+std::shared_ptr<CMachine> CMachineFactory::CreateMachine(int x)
+{
+	auto machine = make_shared<CNewMachine>();
+
+	CMachinesFactory factory;
+
+	// by default, we create machine1
+	auto machineActual = factory.CreateMachine2(machine.get());
+
+	machine->SetMachineActual(machineActual);
+
+	machine->SetLocation(600, 200);
+
+	return machine;
+}

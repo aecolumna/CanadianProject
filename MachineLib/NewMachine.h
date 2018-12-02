@@ -20,11 +20,11 @@ public:
 	virtual void DrawMachine(Gdiplus::Graphics *graphics) override;
 
 	/// Setter/Getter for mMachineFrame
-	virtual void SetMachineFrame(int frame) override { mMachineFrame = frame; }
+	virtual void SetMachineFrame(int frame) override;
 	int GetMachineFrame() const { return mMachineFrame; }
 
 	/// Setter/Getter for mSpeed
-	virtual void SetSpeed(double speed) { mSpeed = speed; }
+	virtual void SetSpeed(double speed) { mSpeed = speed;  }
 	virtual double GetSpeed() const { return mSpeed; }
 
 	/// Setter/Getter for MachineNumber

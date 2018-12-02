@@ -9,6 +9,7 @@
 #include "PolyDrawable.h"
 #include "ImageDrawable.h"
 #include "HeadTop.h"
+#include "Flag.h"
 
 using namespace Gdiplus;
 using namespace std;
@@ -60,6 +61,12 @@ std::shared_ptr<CActor> CSpartyFactory::Create()
     rarm->SetPosition(Point(20 - 69, 22 - 144));
     torso->AddChild(rarm);
 
+	auto usaflag = make_shared <CFlag>(L"USA Flag", L"images/usa_flag.png");
+	usaflag->SetCenter(Point(95, 30));
+	usaflag->SetPosition(Point(40 - 69, 5 - 144));
+	usaflag->SetRotation(.25);
+	rarm->AddChild(usaflag);
+
     auto headb = make_shared<CImageDrawable>(L"Head Bottom", L"images/sparty_lhead.png");
     headb->SetCenter(Point(53, 30));
     headb->SetPosition(Point(0, 37 - 144));
@@ -83,6 +90,8 @@ std::shared_ptr<CActor> CSpartyFactory::Create()
     actor->AddDrawable(rarm);
     actor->AddDrawable(headb);
     actor->AddDrawable(headt);
+	actor->AddDrawable(usaflag);
+
 
     return actor;
 }

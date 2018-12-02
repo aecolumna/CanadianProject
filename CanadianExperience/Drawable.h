@@ -29,7 +29,7 @@ public:
     virtual ~CDrawable();
 
     /** \brief Default constructor disabled */
-    CDrawable() = delete;
+	CDrawable();
     /** \brief Copy constructor disabled */
     CDrawable(const CDrawable &) = delete;
     /** \brief Assignment operator disabled */

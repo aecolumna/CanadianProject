@@ -28,5 +28,6 @@ public:
     ~CMachineFactory();
 
     std::shared_ptr<CMachine> CreateMachine();
+	std::shared_ptr<CMachine> CreateMachine(int x);
 };
 

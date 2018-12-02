@@ -25,6 +25,10 @@ CDrawable::~CDrawable()
 {
 }
 
+CDrawable::CDrawable()
+{
+}
+
 
 /** Add the channels for this drawable to a timeline
 * \param timeline The timeline class.

@@ -321,6 +321,7 @@ std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine1(CNewMachine* ne
 	shaft5->SetRand(x4);
 	roller5->SetRand(x4);
 
+	machine->SetLocation(100, 300);
 	return machine;
 }
 
