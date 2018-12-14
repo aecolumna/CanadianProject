@@ -1,3 +1,11 @@
+/**
+ * \file Shaft.cpp
+ *
+ * \author Andres Columna
+ */
+
+
+
 #include "stdafx.h"
 #include "Shaft.h"
 #include "RotationSink.h"
@@ -7,19 +15,36 @@
 
 using namespace std;
 
-
+/// radius
 const int insidePulleyRadius = 30;
+/// shaft radius
 const int ShaftRadius = 5;
+
+
+/**
+ * Constructor
+ */
 CShaft::CShaft()
 {
 	assert(false); // This shouldn't be running
 }
 
+
+/**
+ * Draw the shaft
+ * \param graphics 
+ */
 void CShaft::Draw(Gdiplus::Graphics* graphics)
 {
 	CComponent::Draw(graphics);
 }
 
+
+/**
+ * Overloaded constructor
+ * \param x X value of constructor
+ * \param y Y value of constructor
+ */
 CShaft::CShaft(int x, int y) : CComponent(x, y)
 {
 
@@ -33,11 +58,22 @@ CShaft::CShaft(int x, int y) : CComponent(x, y)
 
 }
 
+
+/**
+ * Destructor
+ */
 CShaft::~CShaft()
 {
 }
 
+/// pi constant
 const double PI = 3.14149;
+
+
+/**
+ * Update the position
+ * \param angle in radians
+ */
 void CShaft::UpdatePosition(double angle)
 {
 	angle -= .5;
@@ -53,6 +89,11 @@ void CShaft::UpdatePosition(double angle)
 	}
 }
 
+
+/**
+ * Update the rotation
+ * \param angle in radians
+ */
 void CShaft::UpdateRotation(double angle)
 {
 	/*
@@ -88,6 +129,11 @@ void CShaft::UpdateRotation(double angle)
 
 }
 
+
+/**
+ * Setter function
+ * \param rad angle in radians
+ */
 void CShaft::SetSourceRadius(double rad)
 {
 	mAttached = true;

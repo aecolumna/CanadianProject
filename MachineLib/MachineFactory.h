@@ -26,8 +26,13 @@ class AFX_EXT_CLASS CMachineFactory
 public:
     CMachineFactory();
     ~CMachineFactory();
-
+	/**
+	* Create a NewMachine
+	*/
     std::shared_ptr<CMachine> CreateMachine();
+	/**
+	* Create a Newmachine of type 2
+	*/
 	std::shared_ptr<CMachine> CreateMachine(int x);
 };
 

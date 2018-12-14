@@ -1,3 +1,11 @@
+/**
+ * \file Flag.cpp
+ *
+ * \author Andres Columna
+ */
+
+
+
 #include "stdafx.h"
 #include "Flag.h"
 #include "Actor.h"

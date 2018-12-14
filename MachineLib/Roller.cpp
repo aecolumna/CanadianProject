@@ -1,3 +1,11 @@
+/**
+ * \file Roller.cpp
+ *
+ * \author Andres Columna
+ */
+
+
+
 #include "stdafx.h"
 #include "Roller.h"
 #include "RotationSink.h"
@@ -6,19 +14,36 @@
 
 using namespace std;
 
-
+///Constant of inside pulley radius
 const int insidePulleyRadius = 30;
+/// consts of roller Radius
 const int rollerRadius = 5;
+
+
+/**
+ * Constructor
+ */
 CRoller::CRoller()
 {
 	assert(false); // This shouldn't be running
 }
 
+
+/**
+ * Destructor
+ * \param graphics 
+ */
 void CRoller::Draw(Gdiplus::Graphics* graphics)
 {
 	CComponent::Draw(graphics);
 }
 
+
+/**
+ * Constructor
+ * \param x 
+ * \param y 
+ */
 CRoller::CRoller(int x, int y) : CComponent(x, y)
 {
 	CComponent::SetImage(L"images/roller.png");
@@ -30,11 +55,22 @@ CRoller::CRoller(int x, int y) : CComponent(x, y)
 
 }
 
+
+/**
+ * Destructor
+ */
 CRoller::~CRoller()
 {
 }
 
-const double PI = 3.14149;
+/// PI
+const double PI = 3.14149; //< PI
+
+
+/**
+ * Updates position
+ * \param angle 
+ */
 void CRoller::UpdatePosition(double angle)
 {
 	angle -= .5;
@@ -45,6 +81,11 @@ void CRoller::UpdatePosition(double angle)
 	SetY(newHeight);
 }
 
+
+/**
+ * Updates rotation
+ * \param angle Angle to update to
+ */
 void CRoller::UpdateRotation(double angle)
 {
 	/*
@@ -80,6 +121,11 @@ void CRoller::UpdateRotation(double angle)
 
 }
 
+
+/**
+ * Set source radius
+ * \param rad 
+ */
 void CRoller::SetSourceRadius(double rad)
 {
 	mAttached = true;

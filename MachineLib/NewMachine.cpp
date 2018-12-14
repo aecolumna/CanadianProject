@@ -1,8 +1,17 @@
+/**
+ * \file NewMachine.cpp
+ *
+ * \author Andres Columna
+ */
+
+
 #include "stdafx.h"
 #include "NewMachine.h"
 #include "MachineActual.h"
 #include "MachineDlg.h"
 #include "MachinesFactory.h"
+
+
 #include <string>
 #include <sstream>
 #include "Polygon.h"
@@ -12,12 +21,19 @@
 using namespace std;
 using namespace Gdiplus;
 
+
+/**
+ * Constructor
+ */
 CNewMachine::CNewMachine()
 {
 	SetMachineNumber(1);
 }
 
 
+/**
+ * Destructor
+ */
 CNewMachine::~CNewMachine()
 {
 }
@@ -35,12 +51,21 @@ void CNewMachine::DrawMachine(Gdiplus::Graphics * graphics)
 
 }
 
+
+/**
+ * Set machine frame
+ * \param frame 
+ */
 void CNewMachine::SetMachineFrame(int frame)
 {
 	mMachineFrame = frame; 
 }
 
 
+/**
+ * SetMachineNumber
+ * \param machine Number
+ */
 void CNewMachine::SetMachineNumber(int machine)
 {
 	if (machine == mMachineNumber) 
@@ -64,32 +89,13 @@ void CNewMachine::SetMachineNumber(int machine)
 
 }
 
+
+
 /**
- * Draw a centered string
- *
- * \param graphics Graphics object
- * \param str String to draw
- * \param x X location of bottom center of string
- * \param y Y location of bottom center of string
- * \param dy String height
+ * Set location of our machine
+ * \param x 
+ * \param y 
  */
-void CNewMachine::CenteredString(Gdiplus::Graphics *graphics, const std::wstring &str, int x, int y, int dy)
-{
-	y -= dy;
-
-	FontFamily fontFamily(L"Arial");
-	Gdiplus::Font font(&fontFamily, (REAL)dy);
-
-	SolidBrush black(Color(0, 0, 0));
-	RectF rect;
-	graphics->MeasureString(str.c_str(), -1, &font, PointF((REAL)x, (REAL)y), &rect);
-	graphics->DrawString(str.c_str(),  // String to draw
-		-1,         // String length, -1 means it figures it out on its own
-		&font,      // The font to use
-		PointF((REAL)(x - rect.Width / 2), (REAL)y),   // Where to draw (top left corner)
-		&black);    // The brush to draw the text with
-}
-
 void CNewMachine::SetLocation(int x, int y)
 {
 	mX = x;
@@ -101,6 +107,11 @@ void CNewMachine::SetLocation(int x, int y)
 	}
 }
 
+
+/**
+ * Set machine actual of our machine
+ * \param machine 
+ */
 void CNewMachine::SetMachineActual(std::shared_ptr<CMachineActual> machine)
 {
 	mMachine = machine;

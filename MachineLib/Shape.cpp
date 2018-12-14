@@ -1,22 +1,46 @@
+/**
+ * \file Shape.cpp
+ *
+ * \author Andres Columna
+ */
+
+
 #include "stdafx.h"
 #include "Shape.h"
 
 
+/**
+ * Constructor
+ */
 CShape::CShape()
 {
 	CComponent::SetCanMove(true);
 }
 
 
+/**
+ * Constructor overloaded
+ * \param x pos
+ * \param y pos
+ */
 CShape::CShape(int x, int y) : CComponent(x, y)
 {
 	CComponent::SetCanMove(true);
 }
 
+
+/**
+ * Destructor
+ */
 CShape::~CShape()
 {
 }
 
+
+/**
+ * Update rotation
+ * \param angle angle to rotate
+ */
 void CShape::UpdateRotation(double angle)
 {
 	/*
@@ -46,6 +70,11 @@ void CShape::UpdateRotation(double angle)
 
 }
 
+
+/**
+ * Set radius of source
+ * \param rad 
+ */
 void CShape::SetSourceRadius(double rad)
 {
 	mAttached = true;

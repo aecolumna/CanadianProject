@@ -1,11 +1,26 @@
+/**
+ * \file Pulley.cpp
+ *
+ * \author Andres Columna
+ */
+
 #include "stdafx.h"
 #include "Pulley.h"
 #include "RotationSink.h"
 
+
+/**
+ * Constructor
+ */
 CPulley::CPulley()
 {
 }
 
+
+/**
+ * Constructor
+ * \param radius set radius
+ */
 CPulley::CPulley(double radius)
 {
 	CComponent::Circle(radius);
@@ -13,6 +28,13 @@ CPulley::CPulley(double radius)
 	CComponent::SetCanMove(true);
 }
 
+
+/**
+ * Constructor
+ * \param x x position
+ * \param y y position
+ * \param radius of turning
+ */
 CPulley::CPulley(int x, int y, double radius=1) : CComponent(x,y), mRadius(radius)
 {
 
@@ -22,10 +44,18 @@ CPulley::CPulley(int x, int y, double radius=1) : CComponent(x,y), mRadius(radiu
 }
 
 
+/**
+ * Destructor
+ */
 CPulley::~CPulley()
 {
 }
 
+
+/**
+ * Update rotation of pulley
+ * \param angle 
+ */
 void CPulley::UpdateRotation(double angle)
 {
 	/*
@@ -56,6 +86,11 @@ void CPulley::UpdateRotation(double angle)
 	//GetSource()->SetRotation(mRadius * actualAngle);
 }
 
+
+/**
+ * Set radius of source connected to this pulley
+ * \param rad 
+ */
 void CPulley::SetSourceRadius(double rad)
 {
 	mAttached = true;

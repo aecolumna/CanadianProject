@@ -1,3 +1,4 @@
+/** \cond */
 /**
  * \file MachineFactory.cpp
  *
@@ -54,6 +55,11 @@ std::shared_ptr<CMachine> CMachineFactory::CreateMachine()
 }
 
 
+/**
+ * Create Machine
+ * \param x 
+ * \returns 
+ */
 std::shared_ptr<CMachine> CMachineFactory::CreateMachine(int x)
 {
 	auto machine = make_shared<CNewMachine>();
@@ -69,3 +75,5 @@ std::shared_ptr<CMachine> CMachineFactory::CreateMachine(int x)
 
 	return machine;
 }
+
+/** \endcond */

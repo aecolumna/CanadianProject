@@ -1,3 +1,10 @@
+/** \cond */
+/**
+ * \file MachinesFactory.cpp
+ *
+ * \author Andres Columna
+ */
+
 #include "stdafx.h"
 #include "MachinesFactory.h"
 #include "MachineActual.h"
@@ -19,15 +26,23 @@ using namespace Gdiplus;
 
 const double PI = 3.14159;
 
+
+/**
+ * Constructor
+ */
 CMachinesFactory::CMachinesFactory()
 {
 }
 
+
+/**
+ * Destructor
+ */
 CMachinesFactory::~CMachinesFactory()
 {
 }
 
-// Constants
+//! \{
 const int widthBase = 550;
 const int heightBase = 40;
 const int xBase = 230;
@@ -48,7 +63,14 @@ const int miniPulley0X = xBase + 60 + (postWidth / 2);
 const int miniPulley0Y = yBase - heightBase - postHeight;
 const int miniPulley1X = xBase + 60 + (postWidth / 2);
 const int miniPulley1Y = yBase - heightBase - postHeight;
+//! \}
 
+/**
+ * Create a post
+ * \param machine The machine
+ * \param x X location of post
+ * \param color Color of the post
+ */
 void CMachinesFactory::CreatePost(shared_ptr<CMachineActual>& machine, int x, Gdiplus::Color color)
 {
 	auto post = make_shared<CComponent>();
@@ -57,6 +79,13 @@ void CMachinesFactory::CreatePost(shared_ptr<CMachineActual>& machine, int x, Gd
 	machine->AddComponent(post);
 }
 
+
+/**
+ * Create a bar
+ * \param machine Machine
+ * \param x X
+ * \param filename Image filename
+ */
 void CMachinesFactory::CreateBar(shared_ptr<CMachineActual>& machine, int x, std::wstring filename)
 {
 	auto bar = make_shared<CComponent>();
@@ -66,6 +95,13 @@ void CMachinesFactory::CreateBar(shared_ptr<CMachineActual>& machine, int x, std
 	machine->AddComponent(bar);
 }
 
+
+/**
+ * Create a pulley
+ * \param machine 
+ * \param x 
+ * \returns pulley
+ */
 std::shared_ptr<CPulley> CMachinesFactory::CreatePulley(std::shared_ptr<CMachineActual>& machine, int x)
 {
 	auto pulley = make_shared<CPulley>(x, yBase - heightBase - postHeight, insidePulleyRadius);
@@ -74,7 +110,15 @@ std::shared_ptr<CPulley> CMachinesFactory::CreatePulley(std::shared_ptr<CMachine
 
 }
 
-// x2, y2 are points to the left
+
+/**
+ * Calculate distance between two points
+ * \param x1 
+ * \param y1 
+ * \param x2 
+ * \param y2 
+ * \returns 
+ */
 static double Distance(double x1, double y1, double x2, double y2)
 {
 	double deltaX = x2 - x1;
@@ -85,6 +129,15 @@ static double Distance(double x1, double y1, double x2, double y2)
 	return sqrt(intermediate);
 }
 
+
+/**
+ * Calculate angle between two points
+ * \param x1 X1
+ * \param y1 Y1
+ * \param x2 X2
+ * \param y2 Y2
+ * \returns An Angle
+ */
 static double Angle(double x1, double y1, double x2, double y2)
 {
 	double deltaX = x2 - x1;
@@ -95,7 +148,12 @@ static double Angle(double x1, double y1, double x2, double y2)
 	return fabs(angleRad / (2.0 * PI));
 }
 
-/// Make machine of type 1 here!
+
+/**
+ * Make machine of type 1
+ * \param newMachine 
+ * \returns Machine Pointer
+ */
 std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine1(CNewMachine* newMachine)
 {
 	// Create Machine
@@ -326,7 +384,12 @@ std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine1(CNewMachine* ne
 }
 
 
-/// Make machine of type 2 here!
+
+/**
+ * Create machine of type 2
+ * \param newMachine Owner of our machine
+ * \returns Pointer to the machine
+ */
 std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine2(CNewMachine* newMachine)
 {
 	// Create Machine
@@ -552,8 +615,5 @@ std::shared_ptr<CMachineActual> CMachinesFactory::CreateMachine2(CNewMachine* ne
 	return machine;
 }
 
-
-
-
-
+/** \endcond */
 
